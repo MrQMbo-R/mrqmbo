@@ -22,5 +22,5 @@ function bootstrap()
 cssscript();
 jscript();
 bootstrap();
-
+// bootstrap functie overschrijft csscript()
 ?>
