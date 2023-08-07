@@ -49,14 +49,14 @@
         -->
 </section>
  <footer>
-<form action="comment_insert.php" method="POST">
+<form action="php/comment_insert.php" method="POST">
 <label for="name">Name</label>
 <input type="text"name="username" placeholder="Naam">
 <label for="comment">comment</label>
 <textarea name="comment" id="" cols="30" rows="5">
 
 </textarea>
-<input type="button" name="submit" value="Comment">
+<input type="submit" name="submit" value="Comment">
 
 
 </form>

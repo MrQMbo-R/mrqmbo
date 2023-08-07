@@ -12,20 +12,36 @@ function connect_to_database() {
   return $conn;
 }
 
-function insert_comment($conn, $username, $comment, $approved) {
+function insert_comment($username, $comment, $approved) {
+  $con=connect_to_database();
     // Create a prepared statement.
-    $stmt = $conn->prepare("INSERT INTO comments (username, comment, approved) VALUES (?, ?, ?)");
+    $query="INSERT INTO comments (username, comment, approved) VALUES (:username, :comment, :approved)";
+    $stmt = $con->prepare($query);
   
-    // Bind the parameters.
-    $stmt->bind_param("sss", $username, $comment, $approved);
-  
-    // Execute the statement.
-    $stmt->execute();
-  
-    // Close the statement.
-    $stmt->close();
+    try{
+      $stmt->execute(array(':username'=>$username,':comment'=>$comment,':approved'=>$approved));
+      
   }
-
+  catch(PDOException $e){echo 'Exception because '.$e;} 
+  }
+  
+  function insertUser($username,$email,$password)
+  {
+    //Get database connection
+     $con=connect_to_database();
+     //Prepared statement and Query
+      $query="INSERT INTO users(username,email,password) VALUES (:username,:email,:password)";
+      $stmt =$con->prepare($query);
+      //Execute the statement inside tryCatch
+      try{
+        
+          $stmt->execute(array(':username'=>$username,':email'=>$email,':password'=>$password));
+          
+      }
+      catch(PDOException $e){echo 'Exception because '.$e;} 
+        
+        
+  }
 
 
 ?>

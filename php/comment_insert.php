@@ -16,10 +16,10 @@ if (isset($_POST['submit'])) {
     } else {
       var_dump($msg);
       // Insert the data into the database.
-      insert_comment($conn, $username, $comment, 0);
+      insert_comment($username, $comment, 0);
   
       // Redirect to the index page.
-      header("Location: index.php");
+      header("Location:mrqmbo/mrqmbo/index.php");
     }
   
   }
